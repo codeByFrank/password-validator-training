@@ -128,4 +128,46 @@ class PasswordValidatorTest {
     void isCommonPassword_shouldReturnFalse_whenGivenNull() {
         assertFalse(PasswordValidator.isCommonPassword(null));
     }
+
+    // 3.5----------------------------------------------------------------------
+
+    @Test
+    void isValid_shouldReturnTrue_whenPasswordMeetsAllCriteria() {
+        assertTrue(PasswordValidator.isValid("Abcdef1g"));
+    }
+
+    @Test
+    void isValid_shouldReturnTrue_whenGivenLongValidPassword() {
+        assertTrue(PasswordValidator.isValid("MySecurePassword2026"));
+    }
+
+    @Test
+    void isValid_shouldReturnFalse_whenPasswordIsTooShort() {
+        assertFalse(PasswordValidator.isValid("Abc1def"));
+    }
+
+    @Test
+    void isValid_shouldReturnFalse_whenPasswordContainsNoDigit() {
+        assertFalse(PasswordValidator.isValid("Abcdefgh"));
+    }
+
+    @Test
+    void isValid_shouldReturnFalse_whenPasswordContainsNoUppercaseLetter() {
+        assertFalse(PasswordValidator.isValid("abcdefg1"));
+    }
+
+    @Test
+    void isValid_shouldReturnFalse_whenPasswordContainsNoLowercaseLetter() {
+        assertFalse(PasswordValidator.isValid("ABCDEFG1"));
+    }
+
+    @Test
+    void isValid_shouldReturnFalse_whenPasswordIsCommon() {
+        assertFalse(PasswordValidator.isValid("Passwort1"));
+    }
+
+    @Test
+    void isValid_shouldReturnFalse_whenPasswordIsNull() {
+        assertFalse(PasswordValidator.isValid(null));
+    }
 }
