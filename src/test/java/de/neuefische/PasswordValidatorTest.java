@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PasswordValidatorTest {
 
+    // 3.1----------------------------------------------------------------------
+
     @Test
     void hasMinLength_shouldReturnFalse_whenGivenSevenCharacters() {
         assertFalse(PasswordValidator.hasMinLength("1234Abc", 8));
@@ -31,6 +33,8 @@ class PasswordValidatorTest {
         assertFalse(PasswordValidator.hasMinLength(null, 8));
     }
 
+    // 3.2----------------------------------------------------------------------
+
     @Test
     void containsDigit_shouldReturnFalse_whenGivenPasswordWithoutDigit() {
         assertFalse(PasswordValidator.containsDigit("Password"));
@@ -55,4 +59,27 @@ class PasswordValidatorTest {
     void containsDigit_shouldReturnFalse_whenGivenUnicodeDigit() {
         assertFalse(PasswordValidator.containsDigit("Password١"));
     }
+
+    // 3.3----------------------------------------------------------------------
+
+    @Test
+    void containsUpperAndLower_shouldReturnFalse_whenGivenOnlyUppercaseLetters() {
+        assertFalse(PasswordValidator.containsUpperAndLower("PASSWORD"));
+    }
+
+    @Test
+    void containsUpperAndLower_shouldReturnFalse_whenGivenOnlyLowercaseLetters() {
+        assertFalse(PasswordValidator.containsUpperAndLower("password"));
+    }
+
+    @Test
+    void containsUpperAndLower_shouldReturnTrue_whenGivenUpperAndLowercaseLetters() {
+        assertTrue(PasswordValidator.containsUpperAndLower("Password"));
+    }
+
+    @Test
+    void containsUpperAndLower_shouldReturnFalse_whenGivenOneLetter() {
+        assertFalse(PasswordValidator.containsUpperAndLower("A"));
+    }
+
 }
