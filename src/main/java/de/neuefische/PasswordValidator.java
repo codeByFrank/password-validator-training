@@ -70,6 +70,26 @@ public final class PasswordValidator {
     }
 
     public static boolean isValid(String password) {
-        return false;
+        if (password == null) {
+            return false;
+        }
+
+        if (!hasMinLength(password, 8)) {
+            return false;
+        }
+
+        if (!containsDigit(password)) {
+            return false;
+        }
+
+        if (!containsUpperAndLower(password)) {
+            return false;
+        }
+
+        if (isCommonPassword(password)) {
+            return false;
+        }
+
+        return true;
     }
 }
