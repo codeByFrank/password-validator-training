@@ -80,6 +80,34 @@ folgenden Befehl aus:
 mvn -B clean verify
 ```
 
+## CLI starten
+
+Nach dem Erstellen des Projekts kann das CLI über die `Main`-Klasse
+gestartet werden:
+
+```bash
+mvn package
+java -cp "target/*" de.neuefische.Main
+```
+
+Das CLI liest ein Passwort ein und gibt aus, ob es gültig ist. Bei einem
+ungültigen Passwort werden die Gründe angezeigt.
+
+## Manuelles Kompilieren
+
+Das Projekt wurde zusätzlich einmal ohne Maven mit `javac` kompiliert und
+gestartet:
+
+```bash
+cd src/main/java
+javac -d ../../../target/manual-classes de/neuefische/PasswordValidator.java de/neuefische/Main.java
+java -cp ../../../target/manual-classes de.neuefische.Main
+```
+
 ## Bonusaufgaben
 
-Die Sonderzeichen-Policy wurde umgesetzt.
+Folgende Bonusaufgaben wurden umgesetzt:
+
+- Sonderzeichen-Policy
+- CLI-Tool mit Ausgabe der Validierungsgründe
+- Manuelles Kompilieren mit `javac`
