@@ -11,7 +11,17 @@ public final class PasswordValidator {
     }
 
     public static boolean containsDigit(String password) {
-        return false;
+        boolean result = false;
+
+        for(int i = 0; i < password.length() && !result; i++) {
+            char currentChar = password.charAt(i);
+
+            if(currentChar >= '0' && currentChar <= '9') {
+                result = true;
+            }
+        }
+
+        return result;
     }
 
     public static boolean containsUpperAndLower(String password) {
