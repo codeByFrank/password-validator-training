@@ -74,6 +74,8 @@ public final class PasswordValidator {
             return false;
         }
 
+        String sepcialCharacters = "!@#$%^&*()-_+=?.,;:";
+
         if (!hasMinLength(password, 8)) {
             return false;
         }
@@ -83,6 +85,10 @@ public final class PasswordValidator {
         }
 
         if (!containsUpperAndLower(password)) {
+            return false;
+        }
+
+        if (!containsSpecialChar(password, sepcialCharacters)) {
             return false;
         }
 

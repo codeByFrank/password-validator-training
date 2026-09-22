@@ -133,12 +133,12 @@ class PasswordValidatorTest {
 
     @Test
     void isValid_shouldReturnTrue_whenPasswordMeetsAllCriteria() {
-        assertTrue(PasswordValidator.isValid("Abcdef1g"));
+        assertTrue(PasswordValidator.isValid("Abcdef1g!"));
     }
 
     @Test
     void isValid_shouldReturnTrue_whenGivenLongValidPassword() {
-        assertTrue(PasswordValidator.isValid("MySecurePassword2026"));
+        assertTrue(PasswordValidator.isValid("MySecurePassword2026!"));
     }
 
     @Test
@@ -171,6 +171,10 @@ class PasswordValidatorTest {
         assertFalse(PasswordValidator.isValid(null));
     }
 
+    @Test
+    void isValid_shouldReturnFalse_whenPasswordContainsNoSpecialCharacter() {
+        assertFalse(PasswordValidator.isValid("Abcdef1g"));
+    }
 
     // Bonus----------------------------------------------------------------------
 
