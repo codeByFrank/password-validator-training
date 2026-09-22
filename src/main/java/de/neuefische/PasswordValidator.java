@@ -3,7 +3,11 @@ package de.neuefische;
 public final class PasswordValidator {
 
     public static boolean hasMinLength(String password, int min) {
-        return false;
+        if(password != null && password.length() >= min) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public static boolean containsDigit(String password) {
