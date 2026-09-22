@@ -30,4 +30,29 @@ class PasswordValidatorTest {
     void hasMinLength_shouldReturnFalse_whenGivenNullPassword() {
         assertFalse(PasswordValidator.hasMinLength(null, 8));
     }
+
+    @Test
+    void containsDigit_shouldReturnFalse_whenGivenPasswordWithoutDigit() {
+        assertFalse(PasswordValidator.containsDigit("Password"));
+    }
+
+    @Test
+    void containsDigit_shouldReturnTrue_whenGivenPasswordWithOneDigit() {
+        assertTrue(PasswordValidator.containsDigit("Password1"));
+    }
+
+    @Test
+    void containsDigit_shouldReturnTrue_whenGivenPasswordWithMultipleDigits() {
+        assertTrue(PasswordValidator.containsDigit("Pass1word2"));
+    }
+
+    @Test
+    void containsDigit_shouldReturnTrue_whenGivenOnlyDigits() {
+        assertTrue(PasswordValidator.containsDigit("12345678"));
+    }
+
+    @Test
+    void containsDigit_shouldReturnFalse_whenGivenUnicodeDigit() {
+        assertFalse(PasswordValidator.containsDigit("Password١"));
+    }
 }
