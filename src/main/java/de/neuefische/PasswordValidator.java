@@ -1,5 +1,7 @@
 package de.neuefische;
 
+import java.util.Locale;
+
 public final class PasswordValidator {
 
     public static boolean hasMinLength(String password, int min) {
@@ -51,6 +53,19 @@ public final class PasswordValidator {
     }
 
     public static boolean isCommonPassword(String password) {
+        if (password == null) {
+            return false;
+        }
+
+        String[] commonPasswords =  {"password", "Passwort1", "12345678", "Aa345678"};
+        String normalizedPassword = password.trim().toLowerCase(Locale.ROOT);
+
+        for (String commonPassword : commonPasswords) {
+            if (normalizedPassword.equals(commonPassword.toLowerCase(Locale.ROOT))) {
+                return true;
+            }
+        }
+
         return false;
     }
 
