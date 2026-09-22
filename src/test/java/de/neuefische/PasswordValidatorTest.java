@@ -60,6 +60,11 @@ class PasswordValidatorTest {
         assertFalse(PasswordValidator.containsDigit("Password١"));
     }
 
+    @Test
+    void containsDigit_shouldReturnFalse_whenGivenNull() {
+        assertFalse(PasswordValidator.containsDigit(null));
+    }
+
     // 3.3----------------------------------------------------------------------
 
     @Test
@@ -82,4 +87,45 @@ class PasswordValidatorTest {
         assertFalse(PasswordValidator.containsUpperAndLower("A"));
     }
 
+    @Test
+    void containsUpperAndLower_shouldReturnFalse_whenGivenNull() {
+        assertFalse(PasswordValidator.containsUpperAndLower(null));
+    }
+
+    // 3.4----------------------------------------------------------------------
+
+    @Test
+    void isCommonPassword_shouldReturnTrue_whenGivenPassword() {
+        assertTrue(PasswordValidator.isCommonPassword("password"));
+    }
+
+    @Test
+    void isCommonPassword_shouldReturnTrue_whenGivenPasswortOne() {
+        assertTrue(PasswordValidator.isCommonPassword("Passwort1"));
+    }
+
+    @Test
+    void isCommonPassword_shouldReturnTrue_whenGivenOnlyDigits() {
+        assertTrue(PasswordValidator.isCommonPassword("12345678"));
+    }
+
+    @Test
+    void isCommonPassword_shouldReturnTrue_whenGivenAa345678() {
+        assertTrue(PasswordValidator.isCommonPassword("Aa345678"));
+    }
+
+    @Test
+    void isCommonPassword_shouldIgnoreCaseAndSpaces() {
+        assertTrue(PasswordValidator.isCommonPassword("PASSWORD  "));
+    }
+
+    @Test
+    void isCommonPassword_shouldReturnFalse_whenPasswordIsNotCommon() {
+        assertFalse(PasswordValidator.isCommonPassword("Abcdef1g"));
+    }
+
+    @Test
+    void isCommonPassword_shouldReturnFalse_whenGivenNull() {
+        assertFalse(PasswordValidator.isCommonPassword(null));
+    }
 }

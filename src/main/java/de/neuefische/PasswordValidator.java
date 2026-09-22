@@ -13,10 +13,15 @@ public final class PasswordValidator {
     public static boolean containsDigit(String password) {
         boolean result = false;
 
-        for(int i = 0; i < password.length() && !result; i++) {
-            char currentChar = password.charAt(i);
+        if (password == null) {
+            return false;
+        }
 
-            if(currentChar >= '0' && currentChar <= '9') {
+        char[] characters = password.toCharArray();
+
+        for (char character : characters) {
+
+            if(character >= '0' && character <= '9') {
                 result = true;
             }
         }
@@ -25,9 +30,12 @@ public final class PasswordValidator {
     }
 
     public static boolean containsUpperAndLower(String password) {
-
         boolean containsUppercase = false;
         boolean containsLowercase = false;
+
+        if (password == null) {
+            return false;
+        }
 
         for(int i = 0; i < password.length() && (!containsUppercase || !containsLowercase); i++) {
             char currentCharacter = password.charAt(i);
