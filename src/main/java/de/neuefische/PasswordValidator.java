@@ -92,4 +92,9 @@ public final class PasswordValidator {
 
         return true;
     }
+
+    // Bonus
+    public static boolean containsSpecialChar(String password, String allowed) {
+        return false;
+    }
 }

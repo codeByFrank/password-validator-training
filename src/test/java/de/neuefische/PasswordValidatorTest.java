@@ -170,4 +170,39 @@ class PasswordValidatorTest {
     void isValid_shouldReturnFalse_whenPasswordIsNull() {
         assertFalse(PasswordValidator.isValid(null));
     }
+
+
+    // Bonus----------------------------------------------------------------------
+
+    @Test
+    void containsSpecialChar_shouldReturnTrue_whenPasswordContainsAllowedSpecialCharacter() {
+        assertTrue(PasswordValidator.containsSpecialChar(
+                "Abcdef1!",
+                "!@#$%^&*()-_+=?.,;:"
+        ));
+    }
+
+    @Test
+    void containsSpecialChar_shouldReturnFalse_whenPasswordContainsNoSpecialCharacter() {
+        assertFalse(PasswordValidator.containsSpecialChar(
+                "Abcdef12",
+                "!@#$%^&*()-_+=?.,;:"
+        ));
+    }
+
+    @Test
+    void containsSpecialChar_shouldReturnFalse_whenSpecialCharacterIsNotAllowed() {
+        assertFalse(PasswordValidator.containsSpecialChar(
+                "Abcdef1€",
+                "!@#$%^&*()-_+=?.,;:"
+        ));
+    }
+
+    @Test
+    void containsSpecialChar_shouldReturnFalse_whenPasswordIsNull() {
+        assertFalse(PasswordValidator.containsSpecialChar(
+                null,
+                "!@#$%^&*()-_+=?.,;:"
+        ));
+    }
 }
